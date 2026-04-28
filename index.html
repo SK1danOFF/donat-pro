@@ -4,6 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donat Pro — Экономия на играх</title>
+    
+    <meta name="description" content="Моментальное пополнение игрового баланса через официального партнера Donatov.net. Скидки до 40%, бонусы на первый депозит и гарантия безопасности.">
+    <meta property="og:title" content="Donat Pro — Экономь на донате официально">
+    <meta property="og:description" content="Мгновенное зачисление валюты в 50+ игр. Официальные чеки и поддержка 24/7.">
+
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108491141', 'ym');
+
+        ym(108491141, 'init', {
+            ssr:true, 
+            webvisor:true, 
+            clickmap:true, 
+            ecommerce:"dataLayer", 
+            referrer: document.referrer, 
+            url: location.href, 
+            accurateTrackBounce:true, 
+            trackLinks:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108491141" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -83,18 +108,9 @@
         .icon-20 { top: 30%; right: 15%; width: 85px; height: 85px; animation-delay: 19s; }
 
         @keyframes float {
-            0%, 100% { 
-                transform: translate(0, 0) rotate(0deg) scale(1); 
-                opacity: 0.6;
-            }
-            33% { 
-                transform: translate(30px, -50px) rotate(15deg) scale(1.1); 
-                opacity: 0.8;
-            }
-            66% { 
-                transform: translate(-20px, -30px) rotate(-10deg) scale(0.95); 
-                opacity: 0.7;
-            }
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.6; }
+            33% { transform: translate(30px, -50px) rotate(15deg) scale(1.1); opacity: 0.8; }
+            66% { transform: translate(-20px, -30px) rotate(-10deg) scale(0.95); opacity: 0.7; }
         }
 
         .bg-gradient {
@@ -243,7 +259,7 @@
             border-radius: 16px;
         }
 
-        /* Hero - ИСПРАВЛЕННОЕ ЦЕНТРИРОВАНИЕ */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -253,7 +269,7 @@
             padding-top: 140px;
             padding-bottom: 60px;
             position: relative;
-            text-align: center; /* Центрируем весь текст */
+            text-align: center;
         }
 
         .hero-content {
@@ -262,7 +278,7 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Центрируем все элементы по горизонтали */
+            align-items: center;
         }
 
         .hero-label {
@@ -313,7 +329,7 @@
             margin-bottom: 40px;
             line-height: 1.5;
             text-align: center;
-            max-width: 700px; /* Ограничиваем ширину для красоты */
+            max-width: 700px;
             width: 100%;
         }
 
@@ -702,14 +718,8 @@
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .activity-avatar {
@@ -775,154 +785,45 @@
             color: white;
         }
 
-        /* ==================== АДАПТАЦИЯ ПОД ТЕЛЕФОН ==================== */
+        /* АДАПТАЦИЯ ПОД ТЕЛЕФОН */
         @media (max-width: 768px) {
-            nav {
-                top: 10px;
-                padding: 10px 16px;
-                width: 95%;
-                border-radius: 20px;
-            }
-            
-            .nav-content {
-                gap: 15px;
-            }
-            
-            .logo {
-                font-size: 18px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .btn-nav {
-                padding: 8px 16px;
-                font-size: 13px;
-            }
-            
-            .hero {
-                padding-top: 120px;
-                padding-bottom: 40px;
-            }
-            
-            h1 {
-                font-size: 36px;
-                line-height: 1.2;
-            }
-            
-            .hero-subtitle {
-                font-size: 16px;
-                padding: 0 10px;
-                max-width: 100%;
-            }
-            
-            .hero-stats {
-                gap: 24px;
-                padding: 0 20px;
-            }
-            
-            .stat-value {
-                font-size: 28px;
-            }
-            
-            .comparison-grid {
-                grid-template-columns: 1fr;
-                padding: 0 10px;
-            }
-            
-            .card {
-                padding: 30px 20px;
-            }
-            
-            .card-badge {
-                position: relative;
-                top: auto;
-                right: auto;
-                display: inline-block;
-                margin-bottom: 10px;
-            }
-            
-            .calculator-box {
-                padding: 30px 20px;
-                margin: 0 10px;
-            }
-            
-            .savings-result {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-            }
-            
-            .savings-amount {
-                font-size: 36px;
-            }
-            
-            .urgency-box {
-                padding: 40px 20px;
-                margin: 0 10px;
-            }
-            
-            .faq-list {
-                padding: 0 15px;
-            }
-            
-            .faq-question h4 {
-                font-size: 16px;
-            }
-            
-            .activity-feed {
-                position: relative;
-                bottom: auto;
-                right: auto;
-                width: calc(100% - 30px);
-                margin: 40px auto;
-                padding: 20px;
-            }
-            
-            .game-icon {
-                opacity: 0.2;
-                transform: scale(0.7);
-            }
+            nav { top: 10px; padding: 10px 16px; width: 95%; border-radius: 20px; }
+            .nav-content { gap: 15px; }
+            .logo { font-size: 18px; }
+            .nav-links { display: none; }
+            .btn-nav { padding: 8px 16px; font-size: 13px; }
+            .hero { padding-top: 120px; padding-bottom: 40px; }
+            h1 { font-size: 36px; line-height: 1.2; }
+            .hero-subtitle { font-size: 16px; padding: 0 10px; max-width: 100%; }
+            .hero-stats { gap: 24px; padding: 0 20px; }
+            .stat-value { font-size: 28px; }
+            .comparison-grid { grid-template-columns: 1fr; padding: 0 10px; }
+            .card { padding: 30px 20px; }
+            .card-badge { position: relative; top: auto; right: auto; display: inline-block; margin-bottom: 10px; }
+            .calculator-box { padding: 30px 20px; margin: 0 10px; }
+            .savings-result { flex-direction: column; text-align: center; padding: 20px; }
+            .savings-amount { font-size: 36px; }
+            .urgency-box { padding: 40px 20px; margin: 0 10px; }
+            .faq-list { padding: 0 15px; }
+            .faq-question h4 { font-size: 16px; }
+            .activity-feed { position: relative; bottom: auto; right: auto; width: calc(100% - 30px); margin: 40px auto; padding: 20px; }
+            .game-icon { opacity: 0.2; transform: scale(0.7); }
         }
 
         @media (max-width: 480px) {
-            h1 {
-                font-size: 32px;
-            }
-            
-            .btn-large {
-                padding: 16px 30px;
-                font-size: 16px;
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .hero-buttons {
-                width: 100%;
-                padding: 0 20px;
-            }
-            
-            .slider-value {
-                font-size: 28px;
-            }
+            h1 { font-size: 32px; }
+            .btn-large { padding: 16px 30px; font-size: 16px; width: 100%; max-width: 300px; }
+            .hero-buttons { width: 100%; padding: 0 20px; }
+            .slider-value { font-size: 28px; }
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--purple);
-            border-radius: 4px;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 4px; }
     </style>
 </head>
 <body>
 
-    <!-- Иконки на фоне -->
     <div class="game-icons-bg">
         <div class="game-icon purple icon-1">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
@@ -934,14 +835,12 @@
                 <circle cx="50" cy="50" r="10" fill="currentColor"/>
             </svg>
         </div>
-
         <div class="game-icon orange icon-2">
             <svg viewBox="0 0 100 100" fill="currentColor">
                 <path d="M50 5 Q70 40 75 55 Q85 70 70 90 Q50 100 30 90 Q15 70 25 55 Q30 40 50 5Z"/>
                 <path d="M50 25 Q60 50 65 60 Q70 70 60 80 Q50 90 40 80 Q30 70 35 60 Q40 50 50 25Z" fill="white" fill-opacity="0.3"/>
             </svg>
         </div>
-
         <div class="game-icon cyan icon-3">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                 <path d="M15 60 Q15 15 50 15 Q85 15 85 60 L85 75 L15 75Z" fill="currentColor" fill-opacity="0.2"/>
@@ -949,13 +848,11 @@
                 <line x1="25" y1="45" x2="75" y2="45"/>
             </svg>
         </div>
-
         <div class="game-icon yellow icon-4">
             <svg viewBox="0 0 100 100" fill="currentColor">
                 <path d="M50 0 L65 35 L100 35 L70 60 L85 95 L50 70 L15 95 L30 60 L0 35 L35 35Z"/>
             </svg>
         </div>
-
         <div class="game-icon purple icon-5">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
                 <line x1="15" y1="85" x2="85" y2="15"/>
@@ -963,7 +860,6 @@
                 <circle cx="50" cy="50" r="6" fill="currentColor"/>
             </svg>
         </div>
-
         <div class="game-icon green icon-6">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                 <path d="M50 25 L80 40 L80 70 L50 85 L20 70 L20 40 Z" fill="currentColor" fill-opacity="0.2"/>
@@ -973,7 +869,6 @@
                 <rect x="35" y="47" width="30" height="30" fill="white" fill-opacity="0.3"/>
             </svg>
         </div>
-
         <div class="game-icon icon-7" style="color: #9ca3af;">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                 <ellipse cx="50" cy="40" rx="30" ry="35" fill="currentColor" fill-opacity="0.1"/>
@@ -984,14 +879,12 @@
                 <line x1="65" y1="80" x2="65" y2="95"/>
             </svg>
         </div>
-
         <div class="game-icon icon-8" style="color: #ef4444;">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6">
                 <rect x="20" y="20" width="60" height="60" rx="15" transform="rotate(15 50 50)"/>
                 <rect x="35" y="35" width="30" height="30" rx="8" transform="rotate(15 50 50)" fill="currentColor"/>
             </svg>
         </div>
-
         <div class="game-icon pink icon-9">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                 <rect x="15" y="45" width="70" height="50" rx="15" fill="currentColor" fill-opacity="0.1"/>
@@ -1003,7 +896,6 @@
                 <circle cx="50" cy="15" r="10" fill="currentColor"/>
             </svg>
         </div>
-
         <div class="game-icon cyan icon-10">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                 <path d="M50 10 L85 40 L50 90 L15 40 Z" fill="currentColor" fill-opacity="0.3"/>
@@ -1012,14 +904,12 @@
                 <line x1="65" y1="40" x2="50" y2="90"/>
             </svg>
         </div>
-
         <div class="game-icon purple icon-11">
             <svg viewBox="0 0 100 100" fill="currentColor">
                 <path d="M30 20 L70 20 L75 50 L50 90 L25 50 Z" fill-opacity="0.8"/>
                 <line x1="50" y1="50" x2="50" y2="90" stroke="white" stroke-width="6"/>
             </svg>
         </div>
-
         <div class="game-icon orange icon-12">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="50" cy="50" r="45"/>
@@ -1030,7 +920,6 @@
                 <line x1="5" y1="50" x2="95" y2="50"/>
             </svg>
         </div>
-
         <div class="game-icon icon-13" style="color: #3b82f6;">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                 <circle cx="50" cy="50" r="40"/>
@@ -1039,7 +928,6 @@
                 <circle cx="50" cy="50" r="10" fill="white"/>
             </svg>
         </div>
-
         <div class="game-icon icon-14" style="color: #f59e0b;">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                 <rect x="10" y="40" width="80" height="30" rx="5"/>
@@ -1049,21 +937,18 @@
                 <rect x="35" y="30" width="30" height="15" fill="currentColor" fill-opacity="0.3"/>
             </svg>
         </div>
-
         <div class="game-icon icon-15" style="color: #ef4444;">
             <svg viewBox="0 0 100 100" fill="currentColor">
                 <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="3"/>
                 <path d="M50 20 L60 45 L85 50 L60 55 L50 80 L40 55 L15 50 L40 45 Z"/>
             </svg>
         </div>
-
         <div class="game-icon icon-16" style="color: #ef4444;">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                 <path d="M20 20 L80 20 L50 80 Z"/>
                 <circle cx="50" cy="45" r="15"/>
             </svg>
         </div>
-
         <div class="game-icon icon-17" style="color: #8b5cf6;">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="50" cy="50" r="35"/>
@@ -1072,7 +957,6 @@
                 <path d="M50 15 L50 85 M15 50 L85 50" stroke-width="4"/>
             </svg>
         </div>
-
         <div class="game-icon yellow icon-18">
             <svg viewBox="0 0 100 100" fill="currentColor">
                 <circle cx="50" cy="50" r="45"/>
@@ -1080,7 +964,6 @@
                 <text x="50" y="65" text-anchor="middle" font-size="40" font-weight="bold" fill="var(--bg)">₽</text>
             </svg>
         </div>
-
         <div class="game-icon icon-19" style="color: #10b981;">
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                 <rect x="10" y="30" width="80" height="50" rx="20"/>
@@ -1091,7 +974,6 @@
                 <rect x="28" y="45" width="4" height="10"/>
             </svg>
         </div>
-
         <div class="game-icon cyan icon-20">
             <svg viewBox="0 0 100 100" fill="currentColor">
                 <path d="M50 10 L80 40 L50 90 L20 40 Z" fill-opacity="0.8"/>
@@ -1102,7 +984,6 @@
 
     <div class="bg-gradient"></div>
 
-    <!-- Navigation -->
     <nav>
         <div class="nav-content">
             <div class="logo">◆ DONAT PRO</div>
@@ -1111,11 +992,10 @@
                 <a href="#calc" class="nav-link">Калькулятор</a>
                 <a href="#faq" class="nav-link">FAQ</a>
             </div>
-            <a href="https://donatov.net/ref/IGOAT18_REF" class="btn-nav">Войти →</a>
+            <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')" class="btn-nav">Войти →</a>
         </div>
     </nav>
 
-    <!-- Hero - ВЫРОВНЕННЫЙ ПО ЦЕНТРУ -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-label">
@@ -1123,10 +1003,7 @@
                 <span>Официальный партнер Donatov.net</span>
             </div>
             
-            <h1>
-                Экономь до <span>40%</span><br>
-                на игровом донате
-            </h1>
+            <h1>Экономь до <span>40%</span><br>на игровом донате</h1>
             
             <p class="hero-subtitle">
                 Получи доступ к закрытым ценам на Standoff 2, Free Fire, PUBG Mobile и 50+ игр. 
@@ -1134,7 +1011,7 @@
             </p>
 
             <div class="hero-buttons">
-                <a href="https://donatov.net/ref/IGOAT18_REF" class="btn btn-primary btn-large">
+                <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')" class="btn btn-primary btn-large">
                     Получить доступ →
                 </a>
             </div>
@@ -1156,7 +1033,6 @@
         </div>
     </section>
 
-    <!-- Comparison -->
     <section class="section" id="features">
         <div class="container">
             <div class="section-header">
@@ -1170,54 +1046,27 @@
                         ❌ Стандартный способ
                     </div>
                     <div class="feature-list">
-                        <div class="feature-item">
-                            <div class="feature-icon cross">✕</div>
-                            Цены завышены на 40%
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon cross">✕</div>
-                            Требуется верификация
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon cross">✕</div>
-                            Ожидание до 30 минут
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon cross">✕</div>
-                            Нет бонусов и кэшбэка
-                        </div>
+                        <div class="feature-item"><div class="feature-icon cross">✕</div>Цены завышены на 40%</div>
+                        <div class="feature-item"><div class="feature-icon cross">✕</div>Требуется верификация</div>
+                        <div class="feature-item"><div class="feature-icon cross">✕</div>Ожидание до 30 минут</div>
+                        <div class="feature-item"><div class="feature-icon cross">✕</div>Нет бонусов и кэшбэка</div>
                     </div>
                 </div>
                 
                 <div class="card featured">
                     <div class="card-badge">Рекомендуем</div>
-                    <div class="card-title">
-                        ⚡ Через партнерскую ссылку
-                    </div>
+                    <div class="card-title">⚡ Через партнерскую ссылку</div>
                     <div class="feature-list">
-                        <div class="feature-item">
-                            <div class="feature-icon check">✓</div>
-                            Минимальные цены на рынке
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon check">✓</div>
-                            Только ник, без документов
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon check">✓</div>
-                            Автовыдача 0-2 минуты
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon check">✓</div>
-                            +30% бонус + кэшбэк 10%
-                        </div>
+                        <div class="feature-item"><div class="feature-icon check">✓</div>Минимальные цены на рынке</div>
+                        <div class="feature-item"><div class="feature-icon check">✓</div>Только ник, без документов</div>
+                        <div class="feature-item"><div class="feature-icon check">✓</div>Автовыдача 0-2 минуты</div>
+                        <div class="feature-item"><div class="feature-icon check">✓</div>+30% бонус + кэшбэк 10%</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Calculator -->
     <section class="section" id="calc" style="background: rgba(255,255,255,0.02);">
         <div class="container">
             <div class="section-header">
@@ -1243,7 +1092,7 @@
                         <div class="savings-text">Ваша экономия за год</div>
                         <div class="savings-amount" id="savingsValue">4 800 ₽</div>
                     </div>
-                    <a href="https://donatov.net/ref/IGOAT18_REF" class="btn btn-primary">
+                    <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')" class="btn btn-primary">
                         Начать экономить
                     </a>
                 </div>
@@ -1251,7 +1100,6 @@
         </div>
     </section>
 
-    <!-- Urgency -->
     <section class="section">
         <div class="container">
             <div class="urgency-box">
@@ -1261,14 +1109,13 @@
                 <p style="color: rgba(255,255,255,0.7); margin-bottom: 32px; position: relative; z-index: 1;">
                     Осталось 17 мест из 50. После истечения таймера бонус снижается до 5%.
                 </p>
-                <a href="https://donatov.net/ref/IGOAT18_REF" class="btn btn-primary btn-large" style="position: relative; z-index: 1;">
+                <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')" class="btn btn-primary btn-large" style="position: relative; z-index: 1;">
                     Забрать бонус сейчас
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
     <section class="section" id="faq">
         <div class="container">
             <div class="section-header">
@@ -1320,22 +1167,20 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="https://donatov.net/ref/IGOAT18_REF">Магазин</a>
+                <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')">Магазин</a>
                 <a href="#">Поддержка</a>
                 <a href="#">Условия</a>
             </div>
-            <p>© 2024 Donat Pro. Официальный партнер Donatov.net</p>
-            <p style="margin-top: 8px; font-size: 12px; opacity: 0.5;">
-                Не является публичной офертой
+            <p>© 2024-2026 Donat Pro. Официальный партнер </p>
+            <p style="margin-top: 12px; font-size: 11px; opacity: 0.6; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4;">
+             
             </p>
         </div>
     </footer>
 
-    <!-- Activity Feed -->
     <div class="activity-feed">
         <div class="activity-header">
             <div class="dot"></div>
@@ -1345,6 +1190,13 @@
     </div>
 
     <script>
+        // Функция отправки конверсии в Яндекс Метрику
+        function reachGoal(goalName) {
+            if (typeof ym !== 'undefined') {
+                ym(108491141, 'track', goalName);
+            }
+        }
+
         // Calculator
         const slider = document.getElementById('calcSlider');
         const calcValue = document.getElementById('calcValue');
@@ -1424,20 +1276,5 @@
             });
         });
     </script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108491141', 'ym');
-
-    ym(108491141, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/108491141" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-    
 </body>
 </html>
