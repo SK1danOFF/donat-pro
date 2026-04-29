@@ -9,82 +9,126 @@
     <meta property="og:title" content="Donat Pro — Экономь на донате официально">
     <meta property="og:description" content="Мгновенное зачисление валюты в 50+ игр. Официальные чеки и поддержка 24/7.">
 
-   <script>
-        // ИСПРАВЛЕННАЯ ФУНКЦИЯ: теперь данные будут уходить в Метрику правильно
+  <script>
+        // 1. Глобальная функция для Метрики (должна быть доступна везде)
         function reachGoal(goalName) {
-            if (typeof ym !== 'undefined') {
-                ym(108491141, 'reachGoal', goalName);
-                console.log('Событие отправлено: ' + goalName); // Для проверки в консоли
-            } else {
-                console.error('Метрика еще не загрузилась');
+            try {
+                if (typeof ym !== 'undefined') {
+                    // Используем reachGoal — это единственный верный метод для событий
+                    ym(108491141, 'reachGoal', goalName);
+                    console.log('%c [Метрика] Цель ' + goalName + ' успешно отправлена', 'color: #00ff00; font-weight: bold;');
+                } else {
+                    console.warn('[Метрика] Счетчик еще не инициализирован');
+                }
+            } catch (e) {
+                console.error('[Метрика] Ошибка при отправке цели:', e);
             }
-            return true;
+            return true; // Позволяет ссылке сработать после вызова функции
         }
 
-        // Калькулятор
-        const slider = document.getElementById('calcSlider');
-        const calcValue = document.getElementById('calcValue');
-        const savingsValue = document.getElementById('savingsValue');
-        
-        function formatNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        }
-        
-        function updateCalc() {
-            const value = parseInt(slider.value);
-            const save = Math.floor(value * 0.4 * 12);
-            calcValue.textContent = formatNumber(value) + ' ₽';
-            savingsValue.textContent = formatNumber(save) + ' ₽';
-        }
-        
-        if(slider) slider.addEventListener('input', updateCalc);
-        
-        // Таймер
-        function updateTimer() {
-            const now = new Date();
-            const end = new Date();
-            end.setHours(23, 59, 59);
-            const diff = end - now;
-            const h = Math.floor(diff / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            const timerEl = document.getElementById('countdown');
-            if(timerEl) timerEl.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-        }
-        setInterval(updateTimer, 1000);
-        
-        // FAQ
-        function toggleFaq(element) {
-            element.parentElement.classList.toggle('active');
-        }
-        
-        // Activity Feed
-        const names = ['Алексей', 'Мария', 'Иван', 'Дмитрий', 'Анна', 'Сергей', 'Ольга', 'Максим', 'Елена', 'Павел'];
-        const games = ['Standoff 2', 'Free Fire', 'PUBG Mobile', 'Brawl Stars', 'COD Mobile', 'Mobile Legends'];
-        
-        function addActivity() {
-            const name = names[Math.floor(Math.random() * names.length)];
-            const game = games[Math.floor(Math.random() * games.length)];
-            const amount = Math.floor(Math.random() * 500) + 100;
+        // 2. Основная логика (запускается после загрузки DOM)
+        document.addEventListener('DOMContentLoaded', function() {
             
-            const div = document.createElement('div');
-            div.className = 'activity-item';
-            div.innerHTML = `
-                <div class="activity-avatar">${name[0]}</div>
-                <div class="activity-content">
-                    <div class="activity-name">${name}</div>
-                    <div class="activity-game">${game} • ${amount}₽</div>
-                </div>
-                <div class="activity-status">✓</div>
-            `;
+            // --- КАЛЬКУЛЯТОР ---
+            const slider = document.getElementById('calcSlider');
+            const calcValue = document.getElementById('calcValue');
+            const savingsValue = document.getElementById('savingsValue');
             
-            const list = document.getElementById('activityList');
-            if(list) {
+            function updateCalc() {
+                if (!slider || !calcValue || !savingsValue) return;
+                const value = parseInt(slider.value);
+                const save = Math.floor(value * 0.4 * 12);
+                calcValue.textContent = value.toLocaleString('ru-RU') + ' ₽';
+                savingsValue.textContent = save.toLocaleString('ru-RU') + ' ₽';
+            }
+            
+            if (slider) {
+                slider.addEventListener('input', updateCalc);
+                updateCalc(); // Считаем сразу при загрузке
+            }
+
+            // --- ТАЙМЕР ---
+            function updateTimer() {
+                const timerEl = document.getElementById('countdown');
+                if (!timerEl) return;
+                
+                const now = new Date();
+                const end = new Date();
+                end.setHours(23, 59, 59, 999);
+                
+                const diff = end - now;
+                if (diff <= 0) {
+                    timerEl.textContent = "00:00:00";
+                    return;
+                }
+                
+                const h = Math.floor(diff / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                timerEl.textContent = 
+                    `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+            }
+            setInterval(updateTimer, 1000);
+            updateTimer();
+
+            // --- ЛЕНТА АКТИВНОСТИ ---
+            const names = ['Алексей', 'Мария', 'Иван', 'Дмитрий', 'Анна', 'Сергей', 'Ольга', 'Максим'];
+            const games = ['Standoff 2', 'Genshin', 'PUBG Mobile', 'Brawl Stars', 'Steam'];
+            
+            function addActivity() {
+                const list = document.getElementById('activityList');
+                if (!list) return;
+
+                const name = names[Math.floor(Math.random() * names.length)];
+                const game = games[Math.floor(Math.random() * games.length)];
+                const amount = Math.floor(Math.random() * 800) + 200;
+                
+                const div = document.createElement('div');
+                div.className = 'activity-item';
+                div.style.animation = 'slideIn 0.5s ease-out forwards';
+                div.innerHTML = `
+                    <div class="activity-avatar">${name[0]}</div>
+                    <div class="activity-content">
+                        <div class="activity-name">${name}</div>
+                        <div class="activity-game">${game} • ${amount}₽</div>
+                    </div>
+                    <div class="activity-status">✓</div>
+                `;
+                
                 list.insertBefore(div, list.firstChild);
                 if (list.children.length > 3) list.removeChild(list.lastChild);
             }
+            
+            // Запускаем ленту
+            if (document.getElementById('activityList')) {
+                for (let i = 0; i < 2; i++) {
+                    setTimeout(addActivity, i * 1500);
+                }
+                setInterval(addActivity, 6000);
+            }
+
+            // --- ПАРАЛЛАКС ИКОНОК ---
+            document.addEventListener('mousemove', (e) => {
+                const icons = document.querySelectorAll('.game-icon');
+                if (icons.length === 0) return;
+                
+                const x = (e.clientX / window.innerWidth) - 0.5;
+                const y = (e.clientY / window.innerHeight) - 0.5;
+                
+                icons.forEach((icon, index) => {
+                    const speed = (index % 5 + 1) * 10;
+                    icon.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                });
+            });
+        });
+
+        // FAQ функция (вынесена из DOMContentLoaded для доступа из HTML)
+        function toggleFaq(element) {
+            if (element && element.parentElement) {
+                element.parentElement.classList.toggle('active');
+            }
         }
-        setInterval(addActivity, 4000);
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/108491141" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
