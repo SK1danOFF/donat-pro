@@ -25,22 +25,6 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/108491141" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-    <script>
-        function reachGoal(goalName) {
-            try {
-                if (typeof ym !== 'undefined') {
-                    ym(108491141, 'reachGoal', goalName);
-                    console.log('✅ УСПЕХ: Цель ' + goalName + ' отправлена в Метрику!');
-                } else {
-                    console.error('❌ ОШИБКА: Метрика не загрузилась');
-                }
-            } catch(e) {
-                console.error(e);
-            }
-            return true; 
-        }
-    </script>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
@@ -249,7 +233,7 @@
                 <a href="#calc" class="nav-link">Калькулятор</a>
                 <a href="#faq" class="nav-link">FAQ</a>
             </div>
-            <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')" class="btn-nav">Войти →</a>
+            <a href="https://donatov.net/ref/IGOAT18_REF" class="btn-nav">Войти →</a>
         </div>
     </nav>
 
@@ -268,7 +252,7 @@
             </p>
 
             <div class="hero-buttons">
-                <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')" class="btn btn-primary btn-large">
+                <a href="https://donatov.net/ref/IGOAT18_REF" class="btn btn-primary btn-large">
                     Получить доступ →
                 </a>
             </div>
@@ -333,7 +317,7 @@
                         <div class="savings-text">Ваша экономия за год</div>
                         <div class="savings-amount" id="savingsValue">4 800 ₽</div>
                     </div>
-                    <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')" class="btn btn-primary">Начать экономить</a>
+                    <a href="https://donatov.net/ref/IGOAT18_REF" class="btn btn-primary">Начать экономить</a>
                 </div>
             </div>
         </div>
@@ -348,7 +332,7 @@
                 <p style="color: rgba(255,255,255,0.7); margin-bottom: 32px; position: relative; z-index: 1;">
                     Осталось 17 мест из 50. После истечения таймера бонус снижается до 5%.
                 </p>
-                <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')" class="btn btn-primary btn-large" style="position: relative; z-index: 1;">Забрать бонус сейчас</a>
+                <a href="https://donatov.net/ref/IGOAT18_REF" class="btn btn-primary btn-large" style="position: relative; z-index: 1;">Забрать бонус сейчас</a>
             </div>
         </div>
     </section>
@@ -388,12 +372,11 @@
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="https://donatov.net/ref/IGOAT18_REF" onclick="reachGoal('GO_TO_DONAT')">Магазин</a>
+                <a href="https://donatov.net/ref/IGOAT18_REF">Магазин</a>
                 <a href="#">Поддержка</a>
                 <a href="#">Условия</a>
             </div>
             <p>© 2024-2026 Donat Pro. Официальный партнер </p>
-            <p style="margin-top: 12px; font-size: 11px; opacity: 0.6; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4;"></p>
         </div>
     </footer>
 
@@ -406,7 +389,32 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Калькулятор
+            
+            // --- 1. АВТОМАТИЧЕСКАЯ ОТПРАВКА ЦЕЛЕЙ В МЕТРИКУ ---
+            // Находим все ссылки на Donatov.net на сайте
+            const donatLinks = document.querySelectorAll('a[href*="donatov.net"]');
+            
+            donatLinks.forEach(link => {
+                // ПРИНУДИТЕЛЬНО открываем ссылку в новой вкладке. 
+                // Это нужно, чтобы сайт не закрылся до того, как отправит цель в Метрику!
+                link.setAttribute('target', '_blank'); 
+                
+                link.addEventListener('click', function() {
+                    console.log('Клик зафиксирован. Отправляем цель GO_TO_DONAT...');
+                    try {
+                        if (typeof ym !== 'undefined') {
+                            ym(108491141, 'reachGoal', 'GO_TO_DONAT');
+                            console.log('✅ УСПЕХ: Цель GO_TO_DONAT успешно улетела в Метрику!');
+                        } else {
+                            console.error('❌ ОШИБКА: Метрика не загружена (возможно, блокировщик рекламы)');
+                        }
+                    } catch(e) {
+                        console.error('Сбой отправки:', e);
+                    }
+                });
+            });
+
+            // --- 2. КАЛЬКУЛЯТОР ---
             const slider = document.getElementById('calcSlider');
             const calcValue = document.getElementById('calcValue');
             const savingsValue = document.getElementById('savingsValue');
@@ -422,7 +430,7 @@
                 updateCalc();
             }
             
-            // Таймер
+            // --- 3. ТАЙМЕР ---
             const timerEl = document.getElementById('countdown');
             if(timerEl) {
                 function updateTimer() {
@@ -440,7 +448,7 @@
                 updateTimer();
             }
             
-            // Живая лента покупок
+            // --- 4. ЖИВАЯ ЛЕНТА ---
             const list = document.getElementById('activityList');
             if(list) {
                 const names = ['Алексей', 'Мария', 'Иван', 'Дмитрий', 'Анна', 'Сергей', 'Ольга', 'Максим', 'Елена', 'Павел'];
@@ -467,7 +475,7 @@
                 setInterval(addActivity, 4000);
             }
 
-            // Параллакс
+            // --- 5. ПАРАЛЛАКС ФОНА ---
             document.addEventListener('mousemove', (e) => {
                 const mouseX = e.clientX / window.innerWidth - 0.5;
                 const mouseY = e.clientY / window.innerHeight - 0.5;
@@ -478,7 +486,7 @@
             });
         });
 
-        // FAQ функция (должна быть снаружи для onclick)
+        // FAQ 
         function toggleFaq(element) {
             if(element && element.parentElement) {
                 element.parentElement.classList.toggle('active');
